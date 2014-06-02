@@ -29,6 +29,7 @@
 <template:addResources type="css" resources="disqus.css"/>
 <jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
 <jcr:nodeProperty var="shortname" node="${disqusNode}" name="shortname"/>
+<jcr:nodeProperty var="publicKey" node="${disqusNode}" name="publicKey"/>
 <c:set var="shortnameValue" value="${shortname.string}"/>
 <c:if test="${!empty currentNode.properties['shortname'].string}">
     <c:set var="shortnameValue" value="${currentNode.properties['shortname'].string}"/>
@@ -42,11 +43,30 @@
         var readUrl = context+"/"+API_URL_START+"/live/"+locale+"/paths${renderContext.site.path}/disqusSettings";
         var public_key;
         var shortname;
+        var show=true;
+
+        /**
+         * THis function call the Disqus API to get the thread posts count
+         * @param shortname : The Disqus account shortname
+         * @param publicKey : The Disqus account public Key
+         * @param url : The page URL
+         */
+        function getPostsCount(shortname,publicKey, url)
+        {
+            var getUrl = "https://disqus.com/api/3.0/threads/details.json?api_key="+publicKey+"&forum="+shortname+"&thread=link:"+url;
+            $.get(getUrl,function(data) {
+                //Generating datatable innerHTML from API response JSON
+                var count = data.response.posts;
+                $("#showThreads").html("<fmt:message key="jnt_disqusThread.showComments"/> ("+count+")");
+            });
+        }
+
         //Getting Disqus parameter from JCR Live Disqus Settings
         $(document).ready(function(){
             $.get(readUrl,function(data) {
                 shortname = data.properties.shortname.value;
             });
+            getPostsCount("${shortname.string}","${publicKey.string}",window.location.href);
         });
 
     </script>
@@ -63,20 +83,13 @@
     </c:when>
     <c:otherwise>
         <c:if test="${not empty boundComponent}">
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                var disqus_shortname = 'jahiafinaltest'; // required: replace example with your forum shortname
-
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
+            <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
+                <template:addResources>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </template:addResources>
+                <a href="#" id="hideThreads" class="hide" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${boundComponent.displayableName}','${publicKey.string}')"><fmt:message key="jnt_disqusThread.hideComments"/></a>
+                <a id="showThreads" href="#" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${boundComponent.displayableName}','${publicKey.string}');"><fmt:message key="jnt_disqusThread.showComments"/></a>
+            </div>
         </c:if>
     </c:otherwise>
 </c:choose>
