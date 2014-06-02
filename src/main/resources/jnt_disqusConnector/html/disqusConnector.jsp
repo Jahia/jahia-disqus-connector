@@ -22,6 +22,7 @@
 <%--@elvariable id="scriptInfo" type="java.lang.String"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%--@elvariable id="workspace" type="java.lang.String"--%>
+<template:addResources type="javascript" resources="jquery.min.js,jquery-ui.min.js,jquery.blockUI.js,admin-bootstrap.js,workInProgress.js"/>
 <template:addResources type="css" resources="admin-bootstrap.css,datatables/css/bootstrap-theme.css,tablecloth.css"/>
 <%--<template:addResources type="javascript" resources="jquery.min.js,admin-bootstrap.js,workInProgress.js"/>--%>
 <template:addResources type="javascript" resources="datatables/jquery.dataTables.js,i18n/jquery.dataTables-${currentResource.locale}.js,datatables/dataTables.bootstrap-ext.js"/>
@@ -41,16 +42,19 @@
         var mode;
         var endOfURI;
         var threads;
+        var intervalValue;
+        var publicKeyInput = jcrPublickey;
+        var shortnameInput = jcrShortname;
+        var testInterval = 0;
+
         <c:choose>
             <c:when test="${empty disqusNode}">
                 mode = 'create';
                 endOfURI = '${site.identifier}';
-                console.log("Mode Create");
             </c:when>
             <c:otherwise>
                 mode = 'update';
                 endOfURI = '${disqusNode.identifier}';
-                console.log("Mode Update");
             </c:otherwise>
         </c:choose>
 
@@ -64,7 +68,7 @@
             var onLive = checkLive(getURL, inputShortname, inputPublicKey);
             if(onLive)
             {
-                clearInterval();
+                clearInterval(intervalValue);
             }
         }
 
@@ -101,7 +105,7 @@
             //getting the good Json form
             if(mode == 'create')
             {
-                jsonData = "{\"children\":{\"disqusSettings\":{\"name\":\"disqusSettings\",\"type\":\"jnt:disqusConnector\",\"properties\":{\"shortname\":{\"value\":\""+shortname+"\"}, \"publicKey\":{\"value\":\""+api_key+"\"}}}}}";
+                jsonData = "{\"children\":{\"disqusSettings\":{\"name\":\"disqusSettings\",\"type\":\"jnt:disqusConnector\",\"properties\":{\"shortname\":{\"value\":\""+inputShortname+"\"}, \"publicKey\":{\"value\":\""+inputPublicKey+"\"}}}}}";
             }
             else
             {
@@ -113,6 +117,7 @@
                 contentType: 'application/json',
                 data: jsonData,
                 dataType: 'json',
+                async: false,
                 processData: false,
                 type: 'PUT',
                 url: writeUrl,
@@ -120,14 +125,6 @@
                     //check live values every 0.5 sec untill they are up to date
                     setInterval(waitForLive(readUrl, inputShortname, inputPublicKey),500);
                     return true;
-                },
-                error : function(result){
-                    //check live values every 0.5 sec untill they are up to date
-                    setInterval(function(){
-                        console.log("In interval ...");
-                        waitForLive(readUrl, inputShortname, inputPublicKey);
-                    },500);
-                    return false;
                 }
             });
         }
@@ -179,7 +176,7 @@
                 }).fail(function(data){
                     if(data.status==0)
                     {
-                        tableRows = '<tr><td colspan="100%" style="text-align: center"><fmt:message key="jnt_disqusConnector.wrongPublicKey"/></td></tr>';
+                        tableRows = '<tr><td colspan="100%" style="text-align: center"><fmt:message key="jnt_disqusConnector.wrongPublicKey" var="wrongKeyMessage"/>${functions:escapeJavaScript(wrongKeyMessage)}</td></tr>';
                     }
                     else
                     {
@@ -199,7 +196,8 @@
                 "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
                 "iDisplayLength":25,
                 "sPaginationType": "bootstrap",
-                "aaSorting": [] //this option disable sort by default, the user steal can use column names to sort the table
+                "aaSorting": [], //this option disable sort by default, the user steal can use column names to sort the table
+                "sEmptyTable":     "<fmt:message key="jnt_disqusConnector.empty.table"/>"
             });
 
         });
@@ -210,7 +208,7 @@
 
     <h3> <fmt:message key="jnt_disqusConnector.accountInformation"/></h3>
     <div class="row-fluid">
-        <form name="disqusParameter" onsubmit="createUpdateDisqusParameters(shortnameInput, public_keyInput,endOfURI)">
+        <form name="disqusParameter" onsubmit="createUpdateDisqusParameters(shortnameInput, publicKeyInput,endOfURI)">
             <div class="alert alert-info">
                 <div class="row-fluid">
                     <div class="span6">
@@ -218,13 +216,13 @@
                             <div class="control-group">
                                 <label class="control-label"><fmt:message key="jnt_disqusConnector.shortname"/></label>
                                 <div class="controls">
-                                    <input id="disqusShortnameField" name="shortname" type="text" value="<c:if test="${!empty shortname}">${shortname.string}</c:if>" onblur="console.log('shortname input : '+$(this).val());shortnameInput=$(this).val();"/>
+                                    <input id="disqusShortnameField" name="shortname" type="text" value="<c:if test="${!empty shortname}">${shortname.string}</c:if>" onblur="shortnameInput=$(this).val();"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label"><fmt:message key="jnt_disqusConnector.publicKey"/></label>
                                 <div class="controls">
-                                    <input id="disqusApiKeyField" name="publicKey" type="text" value="<c:if test="${!empty publicKey}">${publicKey.string}</c:if>" onblur="public_keyInput=$(this).val();"/>
+                                    <input id="disqusApiKeyField" name="publicKey" type="text" value="<c:if test="${!empty publicKey}">${publicKey.string}</c:if>" onblur="publicKeyInput=$(this).val();"/>
                                 </div>
                             </div>
                             <div>
@@ -266,9 +264,7 @@
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr><td colspan="100%" style="text-align: center"><%@include file="disqus.loader.jspf" %></td></tr>
             </tbody>
         </table>
     </fieldset>
-
 </div>
