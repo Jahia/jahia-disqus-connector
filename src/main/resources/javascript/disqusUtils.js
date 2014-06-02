@@ -15,15 +15,8 @@ function loadDisqus(source, shortname, identifier, url, title) {
     disqus_url = url;
     disqus_title = title;
 
-    console.log("AFTER SETTING ");
-    console.log('disqus_shortname : '+disqus_shortname );
-    console.log('disqus_identifier : '+disqus_identifier );
-    console.log('disqus_url : '+disqus_url );
-    console.log('disqus_title : '+disqus_title );
-
     if (window.DISQUS) {
 
-        console.log(' IN IF ');
         jQuery('#disqus_thread').appendTo(source.parent()); //append the HTML to the control parent
 
         //if Disqus exists, call it's reset method with new parameters
@@ -37,7 +30,6 @@ function loadDisqus(source, shortname, identifier, url, title) {
         });
 
     } else {
-        console.log("IN ELSE");
         //insert a wrapper in HTML after the relevant "show comments" link
         jQuery('<div id="disqus_thread"></div>').insertAfter(source);
 
@@ -50,3 +42,4 @@ function loadDisqus(source, shortname, identifier, url, title) {
 
     }
 }
+

@@ -1,0 +1,31 @@
+package org.jahia.modules.disqusconnector.rules
+
+// list any import classes here.
+import org.jahia.services.content.rules.*
+import org.jahia.services.content.JCRContentUtils
+import org.slf4j.Logger
+
+expander rules.dsl
+
+// declare any global variables here
+global User user
+global Service service
+global Logger logger
+global JCRContentUtils jcrUtils
+
+rule "Publish Disqus settings creation"
+  when
+    A new node is created
+        - the node has the type jnt:disqusConnector
+  then
+    Grant role reader on the node to the user guest
+    Publish the node
+end
+
+rule "Publish Disqus settings update"
+  when
+    A property has been set on a node
+        - the node has the type jnt:disqusConnector
+  then
+    Publish the node
+end

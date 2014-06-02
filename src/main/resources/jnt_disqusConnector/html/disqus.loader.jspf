@@ -1,0 +1,8 @@
+<div style="height: 51px; width: 54px; margin: 0px auto; overflow: hidden; background-image: url(&quot;//a.disquscdn.com/next/assets/img/loader-bg.6f0512a11a0d2d3c1a28284486e74f1d.png&quot;); background-repeat: no-repeat;">
+    <style type="text/css">
+        .disqus-loader{animation:disqus-embed-spinner .7s infinite linear;-webkit-animation:disqus-embed-spinner .7s infinite linear}@keyframes disqus-embed-spinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@-webkit-keyframes disqus-embed-spinner{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}
+    </style>
+    <div style="width: 29px; height: 29px; margin: 11px 14px; background-image: url(&quot;//a.disquscdn.com/next/assets/img/loader-bg.6f0512a11a0d2d3c1a28284486e74f1d.png&quot;); background-repeat: no-repeat; background-position: -54px 0px; transform-origin: 50% 50% 0px;" class="disqus-loader">
+
+    </div>
+</div>
