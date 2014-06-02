@@ -117,8 +117,8 @@
                 contentType: 'application/json',
                 data: jsonData,
                 dataType: 'json',
-                async: false,
                 processData: false,
+                async: false,
                 type: 'PUT',
                 url: writeUrl,
                 success:function(result) {
@@ -138,68 +138,64 @@
         function loadDataTable(disqusJcrShortname,disqusJcrPublicKey)
         {
             var tableRows = "";//Datatable inner html
-            if(!disqusJcrShortname || !disqusJcrPublicKey)
-            {
-                //If shortname and public key are not both setup Jahia is not able to get thread list
-                tableRows = '<tr><td colspan="100%" style="text-align: center"><fmt:message key="jnt_disqusConnector.noSettings"/></td></tr>';
+
+            //Calling Disqus API to get the threads
+            var url = "https://disqus.com/api/3.0/threads/list.json?forum="+disqusJcrShortname+"&api_key="+disqusJcrPublicKey;
+            var http = $.get(url,function(data) {
+                //Generating datatable innerHTML from API response JSON
+                threads = data.response;
+                //Browsing the threads table
+                var threadIndex=0;
+                for(threadIndex=0;threadIndex<threads.length;threadIndex++)
+                {
+                    //Setting the date locale
+                    moment.lang("${currentResource.locale}");
+                    //Formatting the status display
+                    var threadStatus = threads[threadIndex].isClosed?'<span class="text-error"><strong><fmt:message key="jnt_disqusConnector.status.closed"/></strong></span>':'<span class="text-success"><strong><fmt:message key="jnt_disqusConnector.status.open"/></strong></span>';
+                    //Datatable Row inner HTML corresponding to the current thread
+                    var htmlTableLine = '<tr><td><a href="'+threads[threadIndex].link+'">'+threads[threadIndex].title+'</a></td><td>'+moment(new Date(threads[threadIndex].createdAt)).format("L")+'</td><td>'+threads[threadIndex].likes+'</td><td>'+threads[threadIndex].dislikes+'</td><td>'+threadStatus+'</td></tr>';
+                    //Adding the row to the datatable inner HTML
+                    tableRows = tableRows+htmlTableLine;
+                }
                 //Applying the innerHTML to the datatable
                 $("#tableBody").html(tableRows);
-            }
-            else
-            {
-                //Calling Disqus API to get the threads
-                var url = "https://disqus.com/api/3.0/threads/list.json?forum="+disqusJcrShortname+"&api_key="+disqusJcrPublicKey;
-                var http = $.get(url,function(data) {
-                    //Generating datatable innerHTML from API response JSON
-                    threads = data.response;
-                    if(threads.length == 0)
-                    {//No threads to display
-                        tableRows = '<tr><td colspan="100%" style="text-align: center"><fmt:message key="jnt_disqusConnector.empty.table"/></td></tr>';
+                //Build Datatable
+                $('#disqusThreads_table').dataTable({
+                    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                    "iDisplayLength":25,
+                    "sPaginationType": "bootstrap",
+                    "aaSorting": [], //this option disable sort by default, the user steal can use column names to sort the table
+                    "oLanguage": {
+                        "sEmptyTable": "<fmt:message key="jnt_disqusConnector.empty.table"/>"
                     }
-                    else
-                    {//Browsing the threads table
-                        var threadIndex=0;
-                        for(threadIndex=0;threadIndex<threads.length;threadIndex++)
-                        {
-                            //Setting the date locale
-                            moment.lang("${currentResource.locale}");
-                            //Formatting the status display
-                            var threadStatus = threads[threadIndex].isClosed?'<span class="text-error"><strong><fmt:message key="jnt_disqusConnector.status.closed"/></strong></span>':'<span class="text-success"><strong><fmt:message key="jnt_disqusConnector.status.open"/></strong></span>';
-                            //Datatable Row inner HTML corresponding to the current thread
-                            var htmlTableLine = '<tr><td><a href="'+threads[threadIndex].link+'">'+threads[threadIndex].title+'</a></td><td>'+moment(new Date(threads[threadIndex].createdAt)).format("L")+'</td><td>'+threads[threadIndex].likes+'</td><td>'+threads[threadIndex].dislikes+'</td><td>'+threadStatus+'</td></tr>';
-                            //Adding the row to the datatable inner HTML
-                            tableRows = tableRows+htmlTableLine;
-                        }
-                    }
-                    //Applying the innerHTML to the datatable
-                    $("#tableBody").html(tableRows);
-                }).fail(function(data){
-                    if(data.status==0)
-                    {
-                        tableRows = '<tr><td colspan="100%" style="text-align: center"><fmt:message key="jnt_disqusConnector.wrongPublicKey" var="wrongKeyMessage"/>${functions:escapeJavaScript(wrongKeyMessage)}</td></tr>';
-                    }
-                    else
-                    {
-                        tableRows = '<tr><td colspan="100%" style="text-align: center">'+data.responseJSON.response+'</td></tr>';
-                    }
-                    //Applying the innerHTML to the datatable
-                    $("#tableBody").html(tableRows);
-                })
-            }
+                });
+                $("#datatableErrorMessage").hide();
+                $("#dataTableDiv").show();
+            }).fail(function(data){
+                if(data.status==0)
+                {
+                    <fmt:message key="jnt_disqusConnector.wrongPublicKey" var="wrongKey"/>
+                    var errorMessage = '${functions:escapeJavaScript(wrongKey)}';
+                    $("#datatableErrorMessage").html(errorMessage);
+                    $("#datatableErrorMessage").show();
+                    $("#dataTableDiv").hide();
+                }
+                else
+                {
+                    var errorMessage = data.responseJSON.response;
+                    $("#datatableErrorMessage").html(errorMessage);
+                    $("#datatableErrorMessage").show();
+                    $("#dataTableDiv").hide();
+                }
+                //Applying the innerHTML to the datatable
+                $("#tableBody").html(tableRows);
+            });
+
         }
 
         $(document).ready(function () {
             //load datatable with the list of disqus threads calling disqus API
             loadDataTable(jcrShortname,jcrPublickey);
-            //Build Datatable
-            $('#disqusThreads_table').dataTable({
-                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-                "iDisplayLength":25,
-                "sPaginationType": "bootstrap",
-                "aaSorting": [], //this option disable sort by default, the user steal can use column names to sort the table
-                "sEmptyTable":     "<fmt:message key="jnt_disqusConnector.empty.table"/>"
-            });
-
         });
     </script>
 </template:addResources>
@@ -252,19 +248,31 @@
         </form>
     </div>
     <h3> <fmt:message key="jnt_disqusConnector.displayThreadsTitle"/></h3>
-    <fieldset>
-        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="disqusThreads_table">
-            <thead>
-                <tr>
-                    <th><fmt:message key="jnt_disqusConnector.threadTitle"/></th>
-                    <th><fmt:message key="jnt_disqusConnector.creationDate"/></th>
-                    <th><fmt:message key="jnt_disqusConnector.likes"/></th>
-                    <th><fmt:message key="jnt_disqusConnector.dislikes"/></th>
-                    <th><fmt:message key="jnt_disqusConnector.status"/></th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-            </tbody>
-        </table>
-    </fieldset>
+    <c:choose>
+        <c:when test="${not empty shortname and not empty publicKey}">
+        <div id="dataTableDiv" class="row-fluid hide">
+            <div class="span12">
+                <fieldset>
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="disqusThreads_table">
+                        <thead>
+                            <tr>
+                                <th><fmt:message key="jnt_disqusConnector.threadTitle"/></th>
+                                <th><fmt:message key="jnt_disqusConnector.creationDate"/></th>
+                                <th><fmt:message key="jnt_disqusConnector.likes"/></th>
+                                <th><fmt:message key="jnt_disqusConnector.dislikes"/></th>
+                                <th><fmt:message key="jnt_disqusConnector.status"/></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+        </c:when>
+        <c:otherwise>
+            <div><fmt:message key="jnt_disqusConnector.noSettings"/></div>
+        </c:otherwise>
+    </c:choose>
+    <div id="datatableErrorMessage"><%@include file="disqus.loader.jspf" %></div>
 </div>
