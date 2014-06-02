@@ -27,8 +27,12 @@ Jahia Disqus connector v1.0.0
 ## Presentation
 ### Disqus Account information form
 This form allows you to save the needed information about your Disqus account.
+In this form you will have to enter your Disqus shortname and public key.
+Disqus public key can be found on your disqus apps page (https://disqus.com/api/applications/).
+
+If those information are correct, in the table down the form should appear the list of your Disqus threads.
 
 
 ### Disqus Thread component
-This component reads the disqus settings in JCR and create a Disqus Thread using the title of its bounded component and the page URL.
+This component reads the Disqus settings in JCR and create a Disqus Thread using the title of its bounded component and the page URL.
 It can be put in pages areas or templates (like event display templates for example).
