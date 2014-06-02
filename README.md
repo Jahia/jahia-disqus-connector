@@ -18,12 +18,6 @@ Jahia Disqus connector v1.0.0
 
 ---
 
-## TODO
-- Fix Jahia API calls Exception in Digital Factory console.
-- Wait for data to be replicated in live after saving the Disqus account information form.
-
----
-
 ## Presentation
 ### Disqus Account information form
 This form allows you to save the needed information about your Disqus account.
@@ -36,3 +30,6 @@ If those information are correct, in the table down the form should appear the l
 ### Disqus Thread component
 This component reads the Disqus settings in JCR and create a Disqus Thread using the title of its bounded component and the page URL.
 It can be put in pages areas or templates (like event display templates for example).
+Two views are possible for this component.
+The default view : display the disqus thread directly on the page.
+The link view : Display a link proposing to display/hide the thread by clicking on it (with the comment count).
