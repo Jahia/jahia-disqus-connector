@@ -229,14 +229,14 @@
                     <div class="span6" style="text-align:justify">
                         <h6><fmt:message key="jnt_disqusConnector.shortname"/></h6>
                         <p>
-                            <fmt:message key="jnt_disqusConnector.help.getShortname"/>
-                            <fmt:message key="jnt_disqusConnector.help.getShortname2"/>
-                            <fmt:message key="jnt_disqusConnector.help.getShortname3"/>
+                            <fmt:message key="jnt_disqusConnector.help.getShortname"/><br/>
+                            <fmt:message key="jnt_disqusConnector.help.getShortname2"/><br/>
+                            <fmt:message key="jnt_disqusConnector.help.getShortname3"/><br/>
                         </p>
                         <h6><fmt:message key="jnt_disqusConnector.publicKey"/></h6>
                         <p>
-                            <fmt:message key="jnt_disqusConnector.help.getPublicKey"/>
-                            <fmt:message key="jnt_disqusConnector.help.getPublicKey2"/>
+                            <fmt:message key="jnt_disqusConnector.help.getPublicKey"/><br/>
+                            <fmt:message key="jnt_disqusConnector.help.getPublicKey2"/><br/>
                             <fmt:message key="jnt_disqusConnector.help.getPublicKey3"/> : <br/>
                             <a href="https://disqus.com/api/applications/"><fmt:message key="jnt_disqusConnector.help.applicationURL"/></a>
 

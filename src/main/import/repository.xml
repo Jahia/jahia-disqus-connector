@@ -4,7 +4,7 @@
         <jahia-disqus-connector j:dependencies="default siteSettings"
                               j:modulePriority="0"
                               j:moduleType="module"
-                              j:title="Disqus Connector"
+                              j:title="Jahia Disqus Connector"
                               jcr:primaryType="jnt:module">
             <portlets jcr:primaryType="jnt:portletFolder"/>
             <files jcr:primaryType="jnt:folder"/>
@@ -14,11 +14,11 @@
                 <site-settings-base j:view="siteSettings"
                                     jcr:mixinTypes="jmix:useUILocale"
                                     jcr:primaryType="jnt:template">
-                    <disqus j:applyOn="jnt:virtualsite"
+                    <disqusConnector j:applyOn="jnt:virtualsite"
                                       j:requiredPermissionNames="disqusModerator"
                                       j:defaultTemplate="false"
                                       j:hiddenTemplate="true"
-                                      j:icon="/modules/jahia-disqus-connector/templates/files/disqus_logo.png"
+                                      j:icon="/modules/jahia-disqus-connector/templates/files/disqusConnector_logo.png"
                                       j:requiredPermissions=""
                                       j:titleKey="jnt_disqusConnector"
                                       jcr:mixinTypes="jmix:rbTitle"
@@ -26,15 +26,15 @@
                         <pagecontent jcr:primaryType="jnt:contentList">
                             <disqusConnector jcr:primaryType="jnt:disqusConnector"/>
                         </pagecontent>
-                    </disqus>
+                    </disqusConnector>
                 </site-settings-base>
                 <files jcr:primaryType="jnt:folder">
-                    <disqus_logo.png j:height="16"
+                    <disqusConnector_logo.png j:height="16"
                                    j:width="16"
                                    jcr:mixinTypes="jmix:image"
                                    jcr:primaryType="jnt:file">
                         <jcr:content jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
-                    </disqus_logo.png>
+                    </disqusConnector_logo.png>
                 </files>
                 <contents jcr:primaryType="jnt:contentFolder"/>
             </templates>

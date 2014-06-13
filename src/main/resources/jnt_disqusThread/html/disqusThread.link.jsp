@@ -93,8 +93,8 @@
                         <template:addResources>
                             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                         </template:addResources>
-                        <a href="#" id="hideThreads" class="hide" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${boundComponent.displayableName}','${publicKey.string}')"><fmt:message key="jnt_disqusThread.hideComments"/></a>
-                        <a id="showThreads" href="#" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${boundComponent.displayableName}','${publicKey.string}');"><fmt:message key="jnt_disqusThread.showComments"/></a>
+                        <a href="#" id="hideThreads" class="hide" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}')"><fmt:message key="jnt_disqusThread.hideComments"/></a>
+                        <a id="showThreads" href="#" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}');"><fmt:message key="jnt_disqusThread.showComments"/></a>
                     </div>
                 </c:otherwise>
             </c:choose>

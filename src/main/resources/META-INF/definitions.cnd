@@ -3,6 +3,6 @@
 
 [jnt:disqusThread] > jnt:content, jmix:editorialContent, jmix:structuredContent, jmix:bindedComponent
 
-[jnt:disqusConnector] > jnt:content, jmix:editorialContent, jmix:structuredContent, jmix:bindedComponent
-- shortname (string)
-- publicKey (string)
+[jnt:disqusConnector] > jnt:content, jmix:droppableContent, jmix:hiddenType
+ - shortname (string)
+ - publicKey (string)

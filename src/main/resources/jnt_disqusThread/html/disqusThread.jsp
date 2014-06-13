@@ -27,13 +27,15 @@
        value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
 <template:addResources type="javascript" resources="disqusUtils.js"/>
 <template:addResources type="css" resources="disqus.css"/>
+
 <jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
 <jcr:nodeProperty var="shortname" node="${disqusNode}" name="shortname"/>
 <c:set var="shortnameValue" value="${shortname.string}"/>
 <c:if test="${!empty currentNode.properties['shortname'].string}">
     <c:set var="shortnameValue" value="${currentNode.properties['shortname'].string}"/>
 </c:if>
-<c:url var="disqusSettingsURL" value="${url.baseEdit}${renderContext.site.path}.disqus.html"/>
+<c:url var="disqusSettingsURL" value="${url.baseEdit}${renderContext.site.path}.disqusConnector.html"/>
+
 <template:addResources>
     <script type="text/javascript">
         var context = "${url.context}";
@@ -44,15 +46,16 @@
         var shortname;
         //Getting Disqus parameter from JCR Live Disqus Settings
         $(document).ready(function(){
-            $.get(readUrl,function(data) {
-                shortname = data.properties.shortname.value;
-            });
+            <c:if test="${not empty disqusNode}">
+                $.get(readUrl,function(data) {
+                    shortname = data.properties.shortname.value;
+                });
+            </c:if>
         });
 
     </script>
 </template:addResources>
-<jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
-<jcr:nodeProperty var="shortname" node="${disqusNode}" name="shortname"/>
+
 <c:choose>
     <c:when test="${empty shortname.string}">
         <c:if test="${renderContext.editMode}">
