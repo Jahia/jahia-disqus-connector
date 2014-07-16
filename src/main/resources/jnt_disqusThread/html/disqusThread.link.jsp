@@ -1,8 +1,3 @@
-<%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="org.jahia.services.content.JCRNodeWrapper" %>
-<%@ page import="javax.jcr.RepositoryException" %>
-<%@ page import="javax.jcr.Value" %>
-<%@ page import="java.util.HashSet" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -40,33 +35,36 @@
         var context = "${url.context}";
         var API_URL_START = "modules/api/jcr/v1";
         var locale = "${renderContext.UILocale}";
-        var readUrl = context+"/"+API_URL_START+"/live/"+locale+"/paths${renderContext.site.path}/disqusSettings";
+        var readUrl = context + "/" + API_URL_START + "/live/" + locale + "/paths${renderContext.site.path}/disqusSettings";
         var public_key;
         var shortname;
-        var show=true;
+        var show = true;
 
+        var disqus_shortname;
+        var disqus_identifier = '${boundComponent.identifier}';
+        var disqus_url = window.location.href;
+        var disqus_title = '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}';
         /**
          * THis function call the Disqus API to get the thread posts count
          * @param shortname : The Disqus account shortname
          * @param publicKey : The Disqus account public Key
          * @param url : The page URL
          */
-        function getPostsCount(shortname,publicKey, url)
-        {
-            var getUrl = "https://disqus.com/api/3.0/threads/details.json?api_key="+publicKey+"&forum="+shortname+"&thread=link:"+url;
-            $.get(getUrl,function(data) {
+        function getPostsCount(shortname, publicKey, url) {
+            var getUrl = "https://disqus.com/api/3.0/threads/details.json?api_key=" + publicKey + "&forum=" + shortname + "&thread=link:" + url;
+            $.get(getUrl, function (data) {
                 //Generating datatable innerHTML from API response JSON
                 var count = data.response.posts;
-                $("#showThreads").html("<fmt:message key="jnt_disqusThread.showComments"/> ("+count+")");
+                $("#showThreads").html("<fmt:message key="jnt_disqusThread.showComments"/> (" + count + ")");
             });
         }
 
         //Getting Disqus parameter from JCR Live Disqus Settings
-        $(document).ready(function(){
-            $.get(readUrl,function(data) {
+        $(document).ready(function () {
+            $.get(readUrl, function (data) {
                 shortname = data.properties.shortname.value;
             });
-            getPostsCount("${shortname.string}","${publicKey.string}",window.location.href);
+            getPostsCount("${shortname.string}", "${publicKey.string}", window.location.href);
         });
 
     </script>
@@ -77,24 +75,31 @@
     <c:when test="${empty shortname.string}">
         <c:if test="${renderContext.editMode}">
             <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
-                Please set your Disqus Parameters <a href="${disqusSettingsURL}"> <span class="btn btn-primary">here</span></a> to display a Disqus Thread
+                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="${disqusSettingsURL}"><span
+                    class="btn btn-primary"><fmt:message key="jnt_disqusConnector.here"/></span></a><fmt:message
+                    key="jnt_disqusConnector.toDisplay"/>
             </div>
         </c:if>
     </c:when>
     <c:otherwise>
         <c:if test="${not empty boundComponent}">
             <c:choose>
-                <c:when test="${renderContext.editMode}">
+                <c:when test="${!renderContext.liveMode}">
                     <fmt:message key="jnt_disqusThread.threadWillBeDisplayed"/>
                     <%@include file="../../jnt_disqusConnector/html/disqus.loader.jspf" %>
                 </c:when>
                 <c:otherwise>
                     <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
                         <template:addResources>
-                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
+                                powered by Disqus.</a></noscript>
                         </template:addResources>
-                        <a href="#" id="hideThreads" class="hide" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}')"><fmt:message key="jnt_disqusThread.hideComments"/></a>
-                        <a id="showThreads" href="#" onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}');"><fmt:message key="jnt_disqusThread.showComments"/></a>
+                        <a href="#" id="hideThreads" class="hide"
+                           onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}')"><fmt:message
+                                key="jnt_disqusThread.hideComments"/></a>
+                        <a id="showThreads" href="#"
+                           onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}');"><fmt:message
+                                key="jnt_disqusThread.showComments"/></a>
                     </div>
                 </c:otherwise>
             </c:choose>

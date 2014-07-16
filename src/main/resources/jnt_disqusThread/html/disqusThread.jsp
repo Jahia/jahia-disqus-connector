@@ -1,8 +1,3 @@
-<%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="org.jahia.services.content.JCRNodeWrapper" %>
-<%@ page import="javax.jcr.RepositoryException" %>
-<%@ page import="javax.jcr.Value" %>
-<%@ page import="java.util.HashSet" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -38,21 +33,26 @@
 
 <template:addResources>
     <script type="text/javascript">
+        /* * * DISQUS CONFIGURATION VARIABLES * * */
+        var disqus_shortname;
+        var disqus_identifier = '${boundComponent.identifier}';
+        var disqus_url = window.location.href;
+        var disqus_title = '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}';
+
         var context = "${url.context}";
         var API_URL_START = "modules/api/jcr/v1";
         var locale = "${renderContext.UILocale}";
-        var readUrl = context+"/"+API_URL_START+"/live/"+locale+"/paths${renderContext.site.path}/disqusSettings";
+        var readUrl = context + "/" + API_URL_START + "/live/" + locale + "/paths${renderContext.site.path}/disqusSettings";
         var public_key;
         var shortname;
-        //Getting Disqus parameter from JCR Live Disqus Settings
-        $(document).ready(function(){
-            <c:if test="${not empty disqusNode}">
-                $.get(readUrl,function(data) {
-                    shortname = data.properties.shortname.value;
-                });
-            </c:if>
+        <c:if test="${not empty disqusNode}">
+        //Get shortname from settings node via Jahia API call
+        $.get(readUrl, function (data) {
+            shortname = data.properties.shortname.value;
+            //Put shortname in the Disqus configuration variable
+            disqus_shortname = shortname;
         });
-
+        </c:if>
     </script>
 </template:addResources>
 
@@ -60,31 +60,34 @@
     <c:when test="${empty shortname.string}">
         <c:if test="${renderContext.editMode}">
             <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
-                Please set your Disqus Parameters <a href="${disqusSettingsURL}"> <span class="btn btn-primary">here</span></a> to display a Disqus Thread
+                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="${disqusSettingsURL}"> <span
+                    class="btn btn-primary"><fmt:message key="jnt_disqusConnector.here"/></span></a> <fmt:message
+                    key="jnt_disqusConnector.toDisplay"/>
             </div>
         </c:if>
     </c:when>
     <c:otherwise>
         <c:if test="${not empty boundComponent}">
             <c:choose>
-                <c:when test="${renderContext.editMode}">
-                    <fmt:message key="jnt_disqusThread.threadWillBeDisplayed"/>
+                <c:when test="${!renderContext.liveMode}">
                     <%@include file="../../jnt_disqusConnector/html/disqus.loader.jspf" %>
+                    <div style="margin-top:5px;text-align: center"><fmt:message
+                            key="jnt_disqusThread.threadWillBeDisplayed"/></div>
                 </c:when>
                 <c:otherwise>
                     <div id="disqus_thread"></div>
                     <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                        var disqus_shortname = 'jahiafinaltest'; // required: replace example with your forum shortname
-
                         /* * * DON'T EDIT BELOW THIS LINE * * */
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
                             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                         })();
                     </script>
-                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span
+                            class="logo-disqus">Disqus</span></a>
                 </c:otherwise>
             </c:choose>
         </c:if>
