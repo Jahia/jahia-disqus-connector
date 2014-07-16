@@ -85,8 +85,10 @@
         <c:if test="${not empty boundComponent}">
             <c:choose>
                 <c:when test="${!renderContext.liveMode}">
-                    <fmt:message key="jnt_disqusThread.threadWillBeDisplayed"/>
                     <%@include file="../../jnt_disqusConnector/html/disqus.loader.jspf" %>
+                    <div style="margin-top:5px;text-align: center">
+                        <fmt:message key="jnt_disqusThread.threadWillBeDisplayed"/>
+                    </div>
                 </c:when>
                 <c:otherwise>
                     <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
