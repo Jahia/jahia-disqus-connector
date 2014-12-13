@@ -18,46 +18,36 @@
 <%--@elvariable id="scriptInfo" type="java.lang.String"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%--@elvariable id="workspace" type="java.lang.String"--%>
-<c:set var="boundComponent"
-       value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
+
 <template:addResources type="javascript" resources="disqusUtils.js"/>
 <template:addResources type="css" resources="disqus.css"/>
 
 <jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
-<jcr:nodeProperty var="shortname" node="${disqusNode}" name="shortname"/>
-<c:set var="shortnameValue" value="${shortname.string}"/>
-<c:if test="${!empty currentNode.properties['shortname'].string}">
-    <c:set var="shortnameValue" value="${currentNode.properties['shortname'].string}"/>
-</c:if>
+<c:set var="disqus_shortname" value="${disqusNode.properties['shortname'].string}"/>
+<c:set var="boundComponent" value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
+
 <c:url var="disqusSettingsURL" value="${url.baseEdit}${renderContext.site.path}.disqusConnector.html"/>
 
 <template:addResources>
     <script type="text/javascript">
-        /* * * DISQUS CONFIGURATION VARIABLES * * */
-        var disqus_shortname;
-        var disqus_identifier = '${boundComponent.identifier}';
-        var disqus_url = window.location.href;
-        var disqus_title = '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}';
+        <%--var readUrl = '/modules/api/jcr/v1/live/' + '${renderContext.UILocale}' + '/paths${renderContext.site.path}/disqusSettings';--%>
 
-        var context = "${url.context}";
-        var API_URL_START = "modules/api/jcr/v1";
-        var locale = "${renderContext.UILocale}";
-        var readUrl = context + "/" + API_URL_START + "/live/" + locale + "/paths${renderContext.site.path}/disqusSettings";
-        var public_key;
-        var shortname;
-        <c:if test="${not empty disqusNode}">
-        //Get shortname from settings node via Jahia API call
-        $.get(readUrl, function (data) {
-            shortname = data.properties.shortname.value;
-            //Put shortname in the Disqus configuration variable
-            disqus_shortname = shortname;
-        });
-        </c:if>
+        /* * * DISQUS CONFIGURATION VARIABLES * * */
+        var disqus_publicKey = '${functions:escapeJavaScript(disqusNode.properties['publicKey'].string)}';
+        var disqus_shortname = '${functions:escapeJavaScript(disqusNode.properties['shortname'].string)}';
+
+        <%--<c:if test="${not empty disqusNode}">--%>
+            <%--//Get shortname from settings node via Jahia API call--%>
+            <%--$.get(readUrl, function (data) {--%>
+                <%--//Put shortname in the Disqus configuration variable--%>
+                <%--disqus_shortname = data.properties.disqus_shortname.value;--%>
+            <%--});--%>
+        <%--</c:if>--%>
     </script>
 </template:addResources>
 
 <c:choose>
-    <c:when test="${empty shortname.string}">
+    <c:when test="${empty disqus_shortname}">
         <c:if test="${renderContext.editMode}">
             <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
                 <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="${disqusSettingsURL}"> <span
@@ -69,7 +59,7 @@
     <c:otherwise>
         <c:if test="${not empty boundComponent}">
             <c:choose>
-                <c:when test="${!renderContext.liveMode}">
+                <c:when test="${renderContext.editMode}">
                     <%@include file="../../jnt_disqusConnector/html/disqus.loader.jspf" %>
                     <div style="margin-top:5px;text-align: center"><fmt:message
                             key="jnt_disqusThread.threadWillBeDisplayed"/></div>
@@ -77,14 +67,7 @@
                 <c:otherwise>
                     <div id="disqus_thread"></div>
                     <script type="text/javascript">
-                        /* * * DON'T EDIT BELOW THIS LINE * * */
-                        (function () {
-                            var dsq = document.createElement('script');
-                            dsq.type = 'text/javascript';
-                            dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
+                        getDisqus();
                     </script>
                     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span
                             class="logo-disqus">Disqus</span></a>

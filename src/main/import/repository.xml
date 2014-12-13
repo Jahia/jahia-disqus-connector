@@ -18,7 +18,7 @@
                                       j:requiredPermissionNames="disqusModerator"
                                       j:defaultTemplate="false"
                                       j:hiddenTemplate="true"
-                                      j:icon="/modules/jahia-disqus-connector/templates/files/disqusConnector_logo.png"
+                                      j:icon="/modules/jahia-disqus-connector/templates/files/disqus.png"
                                       j:requiredPermissions=""
                                       j:titleKey="jnt_disqusConnector"
                                       jcr:mixinTypes="jmix:rbTitle"
@@ -29,12 +29,14 @@
                     </disqusConnector>
                 </site-settings-base>
                 <files jcr:primaryType="jnt:folder">
-                    <disqusConnector_logo.png j:height="16"
-                                   j:width="16"
-                                   jcr:mixinTypes="jmix:image"
-                                   jcr:primaryType="jnt:file">
+                    <disqus.png j:height="16"
+                                j:width="16"
+                                jcr:mixinTypes="jmix:image"
+                                jcr:primaryType="jnt:file">
                         <jcr:content jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
-                    </disqusConnector_logo.png>
+                        <thumbnail jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
+                        <thumbnail2 jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
+                    </disqus.png>
                 </files>
                 <contents jcr:primaryType="jnt:contentFolder"/>
             </templates>

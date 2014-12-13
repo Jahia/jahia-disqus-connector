@@ -143,7 +143,7 @@
                     //Formatting the status display
                     var threadStatus = threads[threadIndex].isClosed ? '<span class="text-error"><strong><fmt:message key="jnt_disqusConnector.status.closed"/></strong></span>' : '<span class="text-success"><strong><fmt:message key="jnt_disqusConnector.status.open"/></strong></span>';
                     //Datatable Row inner HTML corresponding to the current thread
-                    var htmlTableLine = '<tr><td><a href="' + threads[threadIndex].link + '">' + threads[threadIndex].title + '</a></td><td> ' + threads[threadIndex].posts + ' </td><td>' + moment(new Date(threads[threadIndex].createdAt)).format("L") + '</td><td>' + threads[threadIndex].likes + '</td><td>' + threads[threadIndex].dislikes + '</td><td>' + threadStatus + '</td></tr>';
+                    var htmlTableLine = '<tr><td><a href="' + threads[threadIndex].link + '" target="_blank">' + threads[threadIndex].title + '</a></td><td> ' + threads[threadIndex].posts + ' </td><td>' + moment(new Date(threads[threadIndex].createdAt)).format("L") + '</td><td>' + threads[threadIndex].likes + '</td><td>' + threads[threadIndex].dislikes + '</td><td>' + threadStatus + '</td></tr>';
                     //Adding the row to the datatable inner HTML
                     tableRows = tableRows + htmlTableLine;
                 }

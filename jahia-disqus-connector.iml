@@ -2,20 +2,20 @@
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Osmorc" name="OSGi">
-      <configuration manifestGenerationMode="OsmorcControlled" manifestLocation="" jarfileLocation="ja-hiadisqus-connector-1.0.jar" outputPathType="CompilerOutputPath" bndFileLocation="" bundlorFileLocation="" bundleActivator="" bundleSymbolicName="ja-hiadisqus-connector" bundleVersion="1.0.0" ignoreFilePattern="" useProjectDefaultManifestFileLocation="true" alwaysRebuildBundleJAR="false" doNotSynchronizeWithMaven="false">
+      <configuration manifestGenerationMode="OsmorcControlled" manifestLocation="" jarfileLocation="jahia-disqus-connector-1.0-SNAPSHOT.jar" outputPathType="CompilerOutputPath" bndFileLocation="" bundlorFileLocation="" bundleActivator="" bundleSymbolicName="jahia-disqus-connector" bundleVersion="1.0.0.SNAPSHOT" ignoreFilePattern="" useProjectDefaultManifestFileLocation="true" alwaysRebuildBundleJAR="false" doNotSynchronizeWithMaven="false">
         <additionalProperties>
           <property key="Bundle-Description" value="This is the custom module (Disqus Connector) for running on a Digital Factory server." />
           <property key="Bundle-Vendor" value="Jahia Solutions Group SA" />
           <property key="Bundle-DocURL" value="http://www.jahia.com" />
-          <property key="Jahia-Depends" value="default" />
+          <property key="Jahia-Depends" value="default,siteSettings" />
           <property key="Bundle-Name" value="Disqus Connector" />
           <property key="Bundle-Category" value="jahia-module" />
           <property key="Implementation-Title" value="Disqus Connector" />
-          <property key="Implementation-Version" value="1.0" />
+          <property key="Implementation-Version" value="1.0-SNAPSHOT" />
           <property key="Implementation-Vendor" value="Jahia Solutions Group SA" />
           <property key="Implementation-URL" value="http://www.jahia.com" />
           <property key="Specification-Title" value="Disqus Connector" />
-          <property key="Specification-Version" value="1.0" />
+          <property key="Specification-Version" value="1.0-SNAPSHOT" />
           <property key="Specification-Vendor" value="Jahia Solutions Group SA" />
           <property key="Jahia-Module-Type" value="module" />
           <property key="Jahia-GroupId" value="org.jahia.modules" />
@@ -31,7 +31,7 @@
           <property key="Embed-Dependency" value="*; scope=compile; type=!pom; inline=true" />
           <property key="Embed-Transitive" value="true" />
           <property key="-removeheaders" value="Include-Resource,Private-Package,Embed-Dependency,Embed-Transitive" />
-          <property key="Include-Resource" value="jnt_disqusConnector/html/disqusConnector.jsp=$MODULE_DIR$/src/main/resources/jnt_disqusConnector/html/disqusConnector.jsp,javascript/disqusUtils.js=$MODULE_DIR$/src/main/resources/javascript/disqusUtils.js,META-INF/spring/disqus-connector.xml.disabled=$MODULE_DIR$/src/main/resources/META-INF/spring/disqus-connector.xml.disabled,META-INF/rules.drl.disabled=$MODULE_DIR$/src/main/resources/META-INF/rules.drl.disabled,META-INF/definitions.cnd=$MODULE_DIR$/src/main/resources/META-INF/definitions.cnd,META-INF/disqus-connector.tld.disabled=$MODULE_DIR$/src/main/resources/META-INF/disqus-connector.tld.disabled,jnt_disqusComments/html/disqusComments.jsp=$MODULE_DIR$/src/main/resources/jnt_disqusComments/html/disqusComments.jsp,css/disqus.css=$MODULE_DIR$/src/main/resources/css/disqus.css,resources/disqus-connector.properties=$MODULE_DIR$/src/main/resources/resources/disqus-connector.properties" />
+          <property key="Include-Resource" value="@$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.7.2/jsoup-1.7.2.jar" />
         </additionalProperties>
         <additionalJARContents />
       </configuration>
@@ -47,15 +47,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-impl:7.0.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-api:7.0.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-gwt:7.0.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.7.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-impl:7.0.0.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-api:7.0.0.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-gwt:7.0.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.extjs:gxt:2.3.1-gwt22" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-client:2.1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-common:2.1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-client:2.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-common:2.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:1.6.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gwt-log:gwt-log:3.1.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.configuration:deployers:4.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.configuration:deployers:4.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.commons:jahia-commons:1.0.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-beanutils:commons-beanutils:1.8.3" level="project" />
@@ -135,25 +136,23 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.hibernate:hibernate-validator-annotation-processor:5.0.1.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.hibernate:hibernate-entitymanager:4.2.7.SP1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.jcr:jcr:2.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-api:2.4.5-jahia2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-core:2.4.5-jahia2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-api:2.4.5-jahia4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-core:2.4.5-jahia4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: concurrent:concurrent:1.3.4-jahia6" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: commons-dbcp:commons-dbcp:1.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: commons-pool:commons-pool:1.5.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-commons:2.4.5-jahia2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-spi-commons:2.4.5-jahia2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-spi:2.4.5-jahia2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-commons:2.4.5-jahia4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-spi-commons:2.4.5-jahia4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-spi:2.4.5-jahia4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tika:tika-core:1.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: edu.ucar:netcdf:4.2-min" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:jcl-over-slf4j:1.6.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-rmi:2.4.5-jahia2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-webdav:2.4.5-jahia2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-server:2.4.5-jahia2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-webapp:2.4.5-jahia2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-rmi:2.4.5-jahia4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-webdav:2.4.5-jahia4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-server:2.4.5-jahia4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-webapp:2.4.5-jahia4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tika:tika-parsers:1.5" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.pdfbox:pdfbox:1.8.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.pdfbox:fontbox:1.8.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.pdfbox:jempbox:1.8.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.pdfbox:pdfbox:1.8.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.pdfbox:fontbox:1.8.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.pdfbox:jempbox:1.8.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bouncycastle:bcmail-jdk15:1.45" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bouncycastle:bcprov-jdk15:1.45" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.poi:poi:3.10-FINAL" level="project" />
@@ -162,7 +161,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.poi:poi-ooxml-schemas:3.10-FINAL" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.ccil.cowan.tagsoup:tagsoup:1.2.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-servlet:2.4.5-jahia2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.jackrabbit:jackrabbit-jcr-servlet:2.4.5-jahia4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-log4j12:1.6.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-ext:1.6.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: ch.qos.cal10n:cal10n-api:0.7.4" level="project" />
@@ -217,7 +216,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.script.velocity:jsr223-velocity-engine:1.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: rhino:js:1.7R2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: xalan:serializer:2.7.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: net.sf.saxon:Saxon-HE:9.4.0.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.sf.saxon:Saxon-HE:compressed:9.5.1-5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.portals.pluto:pluto-container:2.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: stax:stax:1.2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.portals.pluto:pluto-portal-driver:2.0.2" level="project" />
@@ -239,7 +238,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.gagravarr:vorbis-java-core:0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.googlecode.juniversalchardet:juniversalchardet:1.0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.uwyn:jhighlight:1.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: net.sf.ehcache:ehcache:2.8.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.sf.ehcache:ehcache:2.8.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-servlet:2.5.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.htmlparser.jericho:jericho-html:3.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: rome:rome-fetcher:1.0" level="project" />
@@ -305,18 +304,16 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.camel:camel-mail:2.12.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.camel:camel-stream:2.12.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.camel:camel-script:2.12.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.osgi:org.osgi.core:4.3.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.osgi:org.osgi.compendium:4.3.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.felix:org.apache.felix.framework:4.2.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.jasypt:jasypt:lite:1.9.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.tuckey:urlrewritefilter:3.2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.yahoo.platform.yui:yuicompressor:standalone:2.4.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere:atmosphere-compat-tomcat:2.0.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere:atmosphere-runtime:2.1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-managed:2.1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-server:2.1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere:atmosphere-runtime:2.1.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-managed:2.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.atmosphere.extensions:atmosphere-gwt20-server:2.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:cdi1.0:15.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-taglib:7.0.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jahia.server:jahia-taglib:7.0.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
   </component>
 </module>

@@ -18,64 +18,42 @@
 <%--@elvariable id="scriptInfo" type="java.lang.String"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%--@elvariable id="workspace" type="java.lang.String"--%>
-<c:set var="boundComponent"
-       value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
+
 <template:addResources type="javascript" resources="disqusUtils.js"/>
 <template:addResources type="css" resources="disqus.css"/>
+
 <jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
-<jcr:nodeProperty var="shortname" node="${disqusNode}" name="shortname"/>
-<jcr:nodeProperty var="publicKey" node="${disqusNode}" name="publicKey"/>
-<c:set var="shortnameValue" value="${shortname.string}"/>
-<c:if test="${!empty currentNode.properties['shortname'].string}">
-    <c:set var="shortnameValue" value="${currentNode.properties['shortname'].string}"/>
-</c:if>
-<c:url var="disqusSettingsURL" value="${url.baseEdit}${renderContext.site.path}.disqus.html"/>
+<c:set var="disqus_shortname" value="${disqusNode.properties['shortname'].string}"/>
+<c:set var="boundComponent" value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
+
+<c:url var="disqusSettingsURL" value="${url.baseEdit}${renderContext.site.path}.disqusConnector.html"/>
+
+<fmt:message key="jnt_disqusThread.hideComments" var="hideComments"/>
+<fmt:message key="jnt_disqusThread.showComments" var="showComments"/>
+
 <template:addResources>
     <script type="text/javascript">
-        var context = "${url.context}";
-        var API_URL_START = "modules/api/jcr/v1";
-        var locale = "${renderContext.UILocale}";
-        var readUrl = context + "/" + API_URL_START + "/live/" + locale + "/paths${renderContext.site.path}/disqusSettings";
-        var public_key;
-        var shortname;
-        var show = true;
+        var jsVarMap = {
+            hideComments: '${functions:escapeJavaScript(hideComments)}',
+            showComments: '${functions:escapeJavaScript(showComments)}'
+        };
 
-        var disqus_shortname;
-        var disqus_identifier = '${boundComponent.identifier}';
-        var disqus_url = window.location.href;
-        var disqus_title = '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}';
-        /**
-         * THis function call the Disqus API to get the thread posts count
-         * @param shortname : The Disqus account shortname
-         * @param publicKey : The Disqus account public Key
-         * @param url : The page URL
-         */
-        function getPostsCount(shortname, publicKey, url) {
-            var getUrl = "https://disqus.com/api/3.0/threads/details.json?api_key=" + publicKey + "&forum=" + shortname + "&thread=link:" + url;
-            $.get(getUrl, function (data) {
-                //Generating datatable innerHTML from API response JSON
-                var count = data.response.posts;
-                $("#showThreads").html("<fmt:message key="jnt_disqusThread.showComments"/> (" + count + ")");
-            });
-        }
+        /* * * DISQUS CONFIGURATION VARIABLES * * */
+        var disqus_publicKey = '${functions:escapeJavaScript(disqusNode.properties['publicKey'].string)}';
+        var disqus_shortname = '${functions:escapeJavaScript(disqusNode.properties['shortname'].string)}';
 
         //Getting Disqus parameter from JCR Live Disqus Settings
         $(document).ready(function () {
-            $.get(readUrl, function (data) {
-                shortname = data.properties.shortname.value;
-            });
-            getPostsCount("${shortname.string}", "${publicKey.string}", window.location.href);
+            getPostsCount();
         });
-
     </script>
 </template:addResources>
-<jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
-<jcr:nodeProperty var="shortname" node="${disqusNode}" name="shortname"/>
+
 <c:choose>
-    <c:when test="${empty shortname.string}">
+    <c:when test="${empty disqus_shortname}">
         <c:if test="${renderContext.editMode}">
             <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
-                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="${disqusSettingsURL}"><span
+                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="${disqusSettingsURL}"> <span
                     class="btn btn-primary"><fmt:message key="jnt_disqusConnector.here"/></span></a><fmt:message
                     key="jnt_disqusConnector.toDisplay"/>
             </div>
@@ -83,28 +61,16 @@
     </c:when>
     <c:otherwise>
         <c:if test="${not empty boundComponent}">
-            <c:choose>
-                <c:when test="${!renderContext.liveMode}">
-                    <%@include file="../../jnt_disqusConnector/html/disqus.loader.jspf" %>
-                    <div style="margin-top:5px;text-align: center">
-                        <fmt:message key="jnt_disqusThread.threadWillBeDisplayed"/>
-                    </div>
-                </c:when>
-                <c:otherwise>
-                    <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
-                        <template:addResources>
-                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments
-                                powered by Disqus.</a></noscript>
-                        </template:addResources>
-                        <a href="#" id="hideThreads" class="hide"
-                           onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}')"><fmt:message
-                                key="jnt_disqusThread.hideComments"/></a>
-                        <a id="showThreads" href="#"
-                           onclick="loadDisqus(jQuery(this),shortname, '${boundComponent.identifier}', window.location.href, '${fn:escapeXml(functions:abbreviate(functions:removeHtmlTags(boundComponent.displayableName), 20,40,'...'))}','${publicKey.string}');"><fmt:message
-                                key="jnt_disqusThread.showComments"/></a>
-                    </div>
-                </c:otherwise>
-            </c:choose>
+            <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
+                <template:addResources>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </template:addResources>
+                <a id="toggleThreads" href="#" data-isDisplayed="false"
+                    onclick="<c:if test="${not renderContext.editMode}">toggleDisqus();</c:if>return false;">
+                    <fmt:message key="jnt_disqusThread.showComments"/>
+                </a>
+                <div id="disqus_thread" class="hide"></div>
+            </div>
         </c:if>
     </c:otherwise>
 </c:choose>
