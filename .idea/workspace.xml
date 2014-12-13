@@ -2,64 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ba0fdc9-b107-480c-8a48-4ca8ed656df6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-loader-bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-logo-blue-transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-logo-blue-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-logo-dark.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-logo-light-transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-logo-white-blue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-logo-white-grey.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-social-icon-blue-transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-social-icon-blue-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-social-icon-dark-transparent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-social-icon-dark.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-social-icon-light.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/icons/disqus-social-icon-white-blue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/import/content/modules/jahia-disqus-connector/templates/files/disqus.png/disqus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/import/content/modules/jahia-disqus-connector/templates/files/disqus.png/thumbnail2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_7_2.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_dbcp_commons_dbcp_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_1_5_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_atmosphere_compat_tomcat_2_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_osgi_org_osgi_core_4_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/icons/jnt_disqusThread_large.png" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_2_8_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_2_8_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_saxon_Saxon_HE_9_4_0_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_saxon_Saxon_HE_compressed_9_5_1_5.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_api_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_api_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_core_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_core_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_commons_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_commons_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_rmi_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_rmi_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_server_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_server_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_servlet_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_jcr_servlet_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_spi_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_spi_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_spi_commons_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_spi_commons_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_webapp_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_webapp_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_webdav_2_4_5_jahia2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_jackrabbit_jackrabbit_webdav_2_4_5_jahia4.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_fontbox_1_8_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_fontbox_1_8_5.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_jempbox_1_8_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_jempbox_1_8_5.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_pdfbox_1_8_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_pdfbox_1_8_5.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_atmosphere_runtime_2_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_atmosphere_runtime_2_1_5.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_client_2_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_server_2_1_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_common_2_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_client_2_1_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_managed_2_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_managed_2_1_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_server_2_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_atmosphere_extensions_atmosphere_gwt20_common_2_1_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_configuration_deployers_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_configuration_deployers_4_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_api_7_0_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_api_7_0_0_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_gwt_7_0_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_gwt_7_0_0_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_impl_7_0_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_impl_7_0_0_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_taglib_7_0_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jahia_server_jahia_taglib_7_0_0_2.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/import/content/modules/jahia-disqus-connector/templates/files/disqusConnector_logo.png" afterPath="$PROJECT_DIR$/src/main/import/content/modules/jahia-disqus-connector/templates/files/disqus.png/thumbnail" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/icons/jnt_disqusThread.png" afterPath="$PROJECT_DIR$/src/main/resources/icons/jnt_disqusThread.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/css/disqus.css" afterPath="$PROJECT_DIR$/src/main/resources/css/disqus.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/jnt_disqusConnector/html/disqus.loader.jspf" afterPath="$PROJECT_DIR$/src/main/resources/jnt_disqusConnector/html/disqus.loader.jspf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/jnt_disqusConnector/html/disqusConnector.jsp" afterPath="$PROJECT_DIR$/src/main/resources/jnt_disqusConnector/html/disqusConnector.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/jnt_disqusThread/html/disqusThread.jsp" afterPath="$PROJECT_DIR$/src/main/resources/jnt_disqusThread/html/disqusThread.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/jnt_disqusThread/html/disqusThread.link.jsp" afterPath="$PROJECT_DIR$/src/main/resources/jnt_disqusThread/html/disqusThread.link.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/javascript/disqusUtils.js" afterPath="$PROJECT_DIR$/src/main/resources/javascript/disqusUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jahia-disqus-connector.iml" afterPath="$PROJECT_DIR$/jahia-disqus-connector.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/import/repository.xml" afterPath="$PROJECT_DIR$/src/main/import/repository.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="disqus-connector.iws" />
@@ -159,11 +101,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.57237935" vertical-offset="1060" max-vertical-offset="2376">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1060" max-vertical-offset="2376">
                   <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.58064514" vertical-offset="0" max-vertical-offset="589">
+                  <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -805,24 +757,28 @@
       <workItem from="1401107677008" duration="8328000" />
       <workItem from="1417620573459" duration="6158000" />
       <workItem from="1418070478750" duration="40000" />
-      <workItem from="1418394760126" duration="18864000" />
+      <workItem from="1418394760126" duration="18948000" />
     </task>
     <task id="LOCAL-00001" summary="Module initialization">
       <created>1400165595331</created>
       <updated>1400165595331</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update POM to 7.0.0.2, fix issue with JS and image on the live, add icons, clean JSP and JS">
+      <created>1418431275983</created>
+      <updated>1418431275983</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69145000" />
+    <option name="totallyTimeSpent" value="69229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="-4" width="1871" height="1084" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -868,7 +824,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Module initialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Module initialization" />
+    <MESSAGE value="Update POM to 7.0.0.2, fix issue with JS and image on the live, add icons, clean JSP and JS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update POM to 7.0.0.2, fix issue with JS and image on the live, add icons, clean JSP and JS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -878,14 +835,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/javascript/disqusUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="900">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/jnt_disqusConnector/html/disqus.loader.jspf">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="234">
@@ -1238,8 +1187,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57237935" vertical-offset="1060" max-vertical-offset="2376">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1060" max-vertical-offset="2376">
           <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58064514" vertical-offset="0" max-vertical-offset="589">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
           <folding />
         </state>
       </provider>
