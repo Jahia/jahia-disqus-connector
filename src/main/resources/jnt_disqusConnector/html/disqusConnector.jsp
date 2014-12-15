@@ -17,13 +17,15 @@
 <%--@elvariable id="scriptInfo" type="java.lang.String"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%--@elvariable id="workspace" type="java.lang.String"--%>
-<template:addResources type="javascript"
-                       resources="jquery.min.js,jquery-ui.min.js,jquery.blockUI.js,admin-bootstrap.js,workInProgress.js"/>
 <template:addResources type="css" resources="admin-bootstrap.css,datatables/css/bootstrap-theme.css,tablecloth.css"/>
-<%--<template:addResources type="javascript" resources="jquery.min.js,admin-bootstrap.js,workInProgress.js"/>--%>
-<template:addResources type="javascript"
-                       resources="datatables/jquery.dataTables.js,i18n/jquery.dataTables-${currentResource.locale}.js,datatables/dataTables.bootstrap-ext.js"/>
+
+<template:addResources type="javascript" resources="jquery.min.js"/>
+<template:addResources type="javascript" resources="jquery-ui.min.js"/>
+<template:addResources type="javascript" resources="admin-bootstrap.js"/>
+<template:addResources type="javascript" resources="jquery.blockUI.js,workInProgress.js"/>
+<template:addResources type="javascript" resources="datatables/jquery.dataTables.js,i18n/jquery.dataTables-${currentResource.locale}.js,datatables/dataTables.bootstrap-ext.js"/>
 <template:addResources type="javascript" resources="moment.min.js"/>
+
 <jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
 <jcr:nodeProperty var="shortname" node="${disqusNode}" name="shortname"/>
 <jcr:nodeProperty var="publicKey" node="${disqusNode}" name="publicKey"/>
