@@ -19,30 +19,18 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%--@elvariable id="workspace" type="java.lang.String"--%>
 
-<template:addResources type="javascript" resources="disqusUtils.js"/>
+<template:addResources type="javascript" resources="disqusThreadUtils.js"/>
 <template:addResources type="css" resources="disqus.css"/>
 
-<jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings"/>
+<jcr:node var="disqusNode" path="${renderContext.site.path}/disqusSettings" />
 <c:set var="disqus_shortname" value="${disqusNode.properties['shortname'].string}"/>
 <c:set var="boundComponent" value="${uiComponents:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
 
-<c:url var="disqusSettingsURL" value="${url.baseEdit}${renderContext.site.path}.disqusConnector.html"/>
-
 <template:addResources>
     <script type="text/javascript">
-        <%--var readUrl = '/modules/api/jcr/v1/live/' + '${renderContext.UILocale}' + '/paths${renderContext.site.path}/disqusSettings';--%>
-
         /* * * DISQUS CONFIGURATION VARIABLES * * */
         var disqus_publicKey = '${functions:escapeJavaScript(disqusNode.properties['publicKey'].string)}';
-        var disqus_shortname = '${functions:escapeJavaScript(disqusNode.properties['shortname'].string)}';
-
-        <%--<c:if test="${not empty disqusNode}">--%>
-            <%--//Get shortname from settings node via Jahia API call--%>
-            <%--$.get(readUrl, function (data) {--%>
-                <%--//Put shortname in the Disqus configuration variable--%>
-                <%--disqus_shortname = data.properties.disqus_shortname.value;--%>
-            <%--});--%>
-        <%--</c:if>--%>
+        var disqus_shortname = '${functions:escapeJavaScript(disqus_shortname)}';
     </script>
 </template:addResources>
 
@@ -50,8 +38,7 @@
     <c:when test="${empty disqus_shortname}">
         <c:if test="${renderContext.editMode}">
             <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
-                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="${disqusSettingsURL}"> <span
-                    class="btn btn-primary"><fmt:message key="jnt_disqusConnector.here"/></span></a> <fmt:message
+                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="<c:url value="${url.baseEdit}${renderContext.site.path}.disqusConnector.html"/>"> <span><fmt:message key="jnt_disqusConnector.here"/></span></a> <fmt:message
                     key="jnt_disqusConnector.toDisplay"/>
             </div>
         </c:if>
