@@ -141,8 +141,9 @@
                         <fmt:message key="jnt_disqusConnector.help.getPublicKey"/><br/>
                         <fmt:message key="jnt_disqusConnector.help.getPublicKey2"/><br/>
                         <fmt:message key="jnt_disqusConnector.help.getPublicKey3"/> : <br/>
-                        <a href="https://disqus.com/api/applications/"><fmt:message
-                                key="jnt_disqusConnector.help.applicationURL"/></a>
+                        <a href="https://disqus.com/api/applications/" target="_blank">
+                            <fmt:message key="jnt_disqusConnector.help.applicationURL"/>
+                        </a>
                     </p>
                 </div>
             </div>

@@ -77,8 +77,7 @@
                                         <th><fmt:message key="jnt_disqusConnector.label.threadsTitle"/></th>
                                         <th><fmt:message key="jnt_disqusConnector.label.postNumber"/></th>
                                         <th><fmt:message key="label.created"/></th>
-                                        <th><fmt:message key="jnt_disqusConnector.likes"/></th>
-                                        <th><fmt:message key="jnt_disqusConnector.dislikes"/></th>
+                                        <th><fmt:message key="jnt_disqusConnector.favorites"/></th>
                                         <th><fmt:message key="jnt_disqusConnector.status"/></th>
                                     </tr>
                                     </thead>

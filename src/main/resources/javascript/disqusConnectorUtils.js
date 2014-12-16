@@ -1,9 +1,6 @@
 /**
  * This function check the live properties and clear the interval if the live is up to date
- * @param getURL : This is the get URL to give to the checkLive function for its api call
- * @param inputShortname : This is the new value of the shortname propertie
- * @param inputPublicKey : This is the new value of the publicKey propertie
- * */
+ */
 function waitForLive() {
     var onLive = checkLive();
     if (onLive) {
@@ -13,10 +10,7 @@ function waitForLive() {
 
 /**
  * This function makes an api call to check if the properties in live mode are updated
- * @param url : The api call URL
- * @param inputShortname : This is the new value of the shortname property
- * @param inputPublicKey : This is the new value of the publicKey property
- * */
+ */
 function checkLive() {
     $.ajax({
         type: "GET",
@@ -31,7 +25,8 @@ function checkLive() {
 
 /**
  * This function create or update disqus settings JCR nodes with the shortname and public key from the form
- * */
+ * @param intervalValue
+ */
 function createUpdateDisqusParameters(intervalValue) {
     //getting the good Json form
     var jsonData;
@@ -69,8 +64,6 @@ function resetDisqusSettings() {
 /**
  * This function checks the shortname and public key inputs.
  * If they are well setup, it calls Disqus API to get the threads linked to the site to load the datatable
- * @param shortnameInput : The JCR shortname value
- * @param public_keyInput : The JCR publicKey value
  */
 function loadDataTable() {
     var tableRows = '';//Datatable inner html
@@ -88,7 +81,7 @@ function loadDataTable() {
             //Formatting the status display
             var threadStatus = threads[threadIndex].isClosed ? jsVarMap.statusClosed : jsVarMap.statusOpen;
             //Datatable Row inner HTML corresponding to the current thread
-            var htmlTableLine = '<tr><td><a href="' + threads[threadIndex].link + '" target="_blank">' + threads[threadIndex].title + '</a></td><td> ' + threads[threadIndex].posts + ' </td><td>' + moment(new Date(threads[threadIndex].createdAt)).format("L") + '</td><td>' + threads[threadIndex].likes + '</td><td>' + threads[threadIndex].dislikes + '</td><td>' + threadStatus + '</td></tr>';
+            var htmlTableLine = '<tr><td><a href="' + threads[threadIndex].link + '" target="_blank">' + threads[threadIndex].title + '</a></td><td> ' + threads[threadIndex].posts + ' </td><td>' + moment(new Date(threads[threadIndex].createdAt)).format("L") + '</td><td>' + threads[threadIndex].likes + '</td><td>' + threadStatus + '</td></tr>';
             //Adding the row to the datatable inner HTML
             tableRows = tableRows + htmlTableLine;
         }
