@@ -33,9 +33,7 @@
                                       j:titleKey="jnt_disqusConnector"
                                       jcr:mixinTypes="jmix:rbTitle"
                                       jcr:primaryType="jnt:contentTemplate">
-                        <pagecontent jcr:primaryType="jnt:contentList">
-                            <disqusConnector jcr:primaryType="jnt:disqusConnector"/>
-                        </pagecontent>
+                            <pagecontent jcr:primaryType="jnt:contentList"/>
                     </disqusConnector>
                 </site-settings-base>
             </templates>
