@@ -76,17 +76,16 @@
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-modules</artifactId>
-    <version>7.0.0.2</version>
+    <version>7.0.0.4</version>
   </parent>
-  <groupId>org.jahia.modules</groupId>
   <artifactId>jahia-disqus-connector</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <name>Disqus Connector</name>
   <description>This is the custom module (Disqus Connector) for running on a Digital Factory server.</description>
   <scm>
-    <connection>scm:dummy:uri</connection>
-    <developerConnection>scm:dummy:uri</developerConnection>
+    <connection>scm:git:git@github.com:Jahia/jahia-disqus-connector.git</connection>
+    <developerConnection>scm:git:git@github.com:Jahia/jahia-disqus-connector.git</developerConnection>
   </scm>
   <repositories>
     <repository>

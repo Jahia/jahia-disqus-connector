@@ -6,20 +6,30 @@
                               j:moduleType="module"
                               j:title="Jahia Disqus Connector"
                               jcr:primaryType="jnt:module">
+                
             <portlets jcr:primaryType="jnt:portletFolder"/>
             <files jcr:primaryType="jnt:folder"/>
             <contents jcr:primaryType="jnt:contentFolder"/>
-            <templates j:rootTemplatePath="/base"
-                       jcr:primaryType="jnt:templatesFolder">
+                <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
+                    <files jcr:primaryType="jnt:folder">
+                        <disqus.png j:height="16"
+                           j:width="16"
+                           jcr:mixinTypes="jmix:image"
+                           jcr:primaryType="jnt:file">
+                            <jcr:content jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
+                            <thumbnail jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
+                            <thumbnail2 jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
+                        </disqus.png>
+                    </files>
+                    <contents jcr:primaryType="jnt:contentFolder"/>
                 <site-settings-base j:view="siteSettings"
                                     jcr:mixinTypes="jmix:useUILocale"
                                     jcr:primaryType="jnt:template">
                     <disqusConnector j:applyOn="jnt:virtualsite"
-                                      j:requiredPermissionNames="disqusModerator"
                                       j:defaultTemplate="false"
                                       j:hiddenTemplate="true"
                                       j:icon="/modules/jahia-disqus-connector/templates/files/disqus.png"
-                                      j:requiredPermissions=""
+                                j:requiredPermissionNames="disqusModerator"
                                       j:titleKey="jnt_disqusConnector"
                                       jcr:mixinTypes="jmix:rbTitle"
                                       jcr:primaryType="jnt:contentTemplate">
@@ -28,18 +38,8 @@
                         </pagecontent>
                     </disqusConnector>
                 </site-settings-base>
-                <files jcr:primaryType="jnt:folder">
-                    <disqus.png j:height="16"
-                                j:width="16"
-                                jcr:mixinTypes="jmix:image"
-                                jcr:primaryType="jnt:file">
-                        <jcr:content jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
-                        <thumbnail jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
-                        <thumbnail2 jcr:mimeType="image/png" jcr:primaryType="jnt:resource"/>
-                    </disqus.png>
-                </files>
-                <contents jcr:primaryType="jnt:contentFolder"/>
             </templates>
+                
         </jahia-disqus-connector>
     </modules>
 </content>

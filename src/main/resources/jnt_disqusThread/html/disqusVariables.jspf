@@ -1,0 +1,7 @@
+var disqus_publicKey = '${functions:escapeJavaScript(disqusNode.properties['publicKey'].string)}';
+var disqus_shortname = '${functions:escapeJavaScript(disqus_shortname)}';
+var disqus_identifier = '${boundComponent.identifier}_${renderContext.mainResourceLocale}';
+var disqus_title = '${functions:escapeJavaScript(boundComponent.displayableName)}';
+var disqus_config = function () {
+this.language = "${renderContext.mainResourceLocale.language}";
+};

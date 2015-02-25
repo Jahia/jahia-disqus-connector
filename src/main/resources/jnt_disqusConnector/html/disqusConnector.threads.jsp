@@ -59,6 +59,9 @@
     <a href="<c:url value='${linkToSettings}?disqusConnectorView=settings'/>" class="btn pull-right">
         <i class="icon-edit"></i>&nbsp;&nbsp;<fmt:message key="jnt_disqusConnector.button.editSettings"/>
     </a>
+    <a href="https://${shortname}.disqus.com/admin" class="btn pull-right" target="_new">
+        <i class="icon-eye-open"></i>&nbsp;&nbsp;<fmt:message key="jnt_disqusConnector.button.admin"/>
+    </a>
 </div>
 
 <div class="container">

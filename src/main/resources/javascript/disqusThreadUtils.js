@@ -22,7 +22,7 @@ function toggleDisqus() {
  * @param publicKey : Disqus account public Key
  */
 function getPostsCount() {
-    var getUrl = "https://disqus.com/api/3.0/threads/details.json?api_key=" + disqus_publicKey + "&thread=link:" + window.location.href + "&forum=" + disqus_shortname;
+    var getUrl = "https://disqus.com/api/3.0/threads/details.json?api_key=" + disqus_publicKey+"&forum="+disqus_shortname + "&thread=ident:" + disqus_identifier;
     $.get(getUrl, function (data) {
         $("#toggleThreads").html(jsVarMap.showComments + " (" + data.response.posts + ")");
     });

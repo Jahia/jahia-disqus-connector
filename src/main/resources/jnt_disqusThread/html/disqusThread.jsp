@@ -29,8 +29,7 @@
 <template:addResources>
     <script type="text/javascript">
         /* * * DISQUS CONFIGURATION VARIABLES * * */
-        var disqus_publicKey = '${functions:escapeJavaScript(disqusNode.properties['publicKey'].string)}';
-        var disqus_shortname = '${functions:escapeJavaScript(disqus_shortname)}';
+        <%@include file="disqusVariables.jspf"%>
     </script>
 </template:addResources>
 
