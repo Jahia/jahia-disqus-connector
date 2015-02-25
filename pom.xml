@@ -78,7 +78,7 @@
     <version>7.0.0.4</version>
   </parent>
   <artifactId>jahia-disqus-connector</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <name>Disqus Connector</name>
   <description>This is the custom module (Disqus Connector) for running on a Digital Factory server.</description>
@@ -87,12 +87,42 @@
     <developerConnection>scm:git:git@github.com:Jahia/jahia-disqus-connector.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
-  <distributionManagement>
-    <repository>
-      <id>jahia-public</id>
-      <url>https://devtools.jahia.com/nexus/content/groups/public</url>
-    </repository>
-  </distributionManagement>
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>jahia-public</id>
+            <name>Jahia Public Repository</name>
+            <url>https://devtools.jahia.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>jahia-enterprise</id>
+            <name>Jahia Enterprise Repository</name>
+            <url>https://devtools.jahia.com/nexus/content/groups/enterprise</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>jahia-releases</id>
+            <url>https://devtools.jahia.com/nexus/content/repositories/jahia-community-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>jahia-enterprise-snapshots</id>
+            <url>https://devtools.jahia.com/nexus/content/repositories/jahia-community-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
   <dependencies>
     <dependency>
       <groupId>org.jsoup</groupId>
@@ -100,20 +130,6 @@
       <version>1.7.2</version>
     </dependency>
   </dependencies>
-  <repositories>
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <id>jahia-public</id>
-      <name>Jahia Public Repository</name>
-      <url>https://devtools.jahia.com/nexus/content/groups/public</url>
-    </repository>
-  </repositories>
   <build>
     <plugins>
       <plugin>
