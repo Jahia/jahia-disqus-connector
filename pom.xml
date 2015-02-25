@@ -78,14 +78,14 @@
     <version>7.0.0.4</version>
   </parent>
   <artifactId>jahia-disqus-connector</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <name>Disqus Connector</name>
   <description>This is the custom module (Disqus Connector) for running on a Digital Factory server.</description>
   <scm>
     <connection>scm:git:git@github.com:Jahia/jahia-disqus-connector.git</connection>
     <developerConnection>scm:git:git@github.com:Jahia/jahia-disqus-connector.git</developerConnection>
-    <tag>1_0</tag>
+    <tag>HEAD</tag>
   </scm>
     <repositories>
         <repository>
