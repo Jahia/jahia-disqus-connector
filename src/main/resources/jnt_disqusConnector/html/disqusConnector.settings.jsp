@@ -69,14 +69,14 @@
 <div class="clearfix">
     <h1 class="pull-left"><fmt:message key="jnt_disqusConnector"/></h1>
     <div class="pull-right">
-        <img alt="" src="<c:url value="${url.currentModule}/icons/disqus-logo-blue-transparent.png"/>"
+        <img alt="" src="<c:url value='${url.currentModule}/icons/disqus-logo-blue-transparent.png'/>"
         width="122" height="32">
     </div>
 </div>
 
 <c:if test="${not empty shortname and not empty publicKey}">
     <div class="row-fluid">
-        <a href="<c:url value="${url.base}${renderContext.mainResource.node.path}.${renderContext.mainResource.template}.html"/>" class="btn pull-right">
+        <a href="<c:url value='${url.base}${renderContext.mainResource.node.path}.${renderContext.mainResource.template}.html'/>" class="btn pull-right">
             <i class="icon-list"></i>&nbsp;&nbsp;<fmt:message key="jnt_disqusConnector.button.backToTreads"/>
         </a>
     </div>

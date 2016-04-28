@@ -37,7 +37,7 @@
     <c:when test="${empty disqus_shortname}">
         <c:if test="${renderContext.editMode}">
             <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
-                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="<c:url value="${url.baseEdit}${renderContext.site.path}.disqusConnector.html"/>"> <span><fmt:message key="jnt_disqusConnector.here"/></span></a> <fmt:message
+                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="<c:url value='${url.baseEdit}${renderContext.site.path}.disqusConnector.html'/>"> <span><fmt:message key="jnt_disqusConnector.here"/></span></a> <fmt:message
                     key="jnt_disqusConnector.toDisplay"/>
             </div>
         </c:if>

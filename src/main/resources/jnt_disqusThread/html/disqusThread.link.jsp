@@ -49,7 +49,7 @@
     <c:when test="${empty disqus_shortname}">
         <c:if test="${renderContext.editMode}">
             <div class="disqusCommentsBlock" id="${boundComponent.identifier}" style="margin-bottom:15px;">
-                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="<c:url value="${url.baseEdit}${renderContext.site.path}.disqusConnector.html"/>"> <span><fmt:message key="jnt_disqusConnector.here"/></span></a><fmt:message
+                <fmt:message key="jnt_disqusConnector.setParameters"/> <a href="<c:url value='${url.baseEdit}${renderContext.site.path}.disqusConnector.html'/>"> <span><fmt:message key="jnt_disqusConnector.here"/></span></a><fmt:message
                     key="jnt_disqusConnector.toDisplay"/>
             </div>
         </c:if>
@@ -61,7 +61,7 @@
                     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 </template:addResources>
                 <a id="toggleThreads" href="#" data-isDisplayed="false"
-                    onclick="<c:if test="${not renderContext.editMode}">toggleDisqus();</c:if>return false;">
+                    onclick="<c:if test='${not renderContext.editMode}'>toggleDisqus();</c:if>return false;">
                     <fmt:message key="jnt_disqusThread.showComments"/>
                 </a>
                 <div id="disqus_thread" class="hide"></div>
